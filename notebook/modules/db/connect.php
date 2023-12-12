@@ -17,7 +17,7 @@ class connect
                 mysqli_query(self::$db, "CREATE DATABASE IF NOT EXISTS $config[name_db]");
                 echo(mysqli_error(self::$db));
                 self::$db = mysqli_connect("$config[host]", "$config[username]", "$config[password]", "$config[name_db]");
-                mysqli_query(self::$db,"CREATE TABLE IF NOT EXISTS posts (id INTEGER  AUTO_INCREMENT PRIMARY KEY, Header VARCHAR(30) , Title VARCHAR(30) , video VARCHAR(30) , preview  VARCHAR(30) );");
+                mysqli_query(self::$db,"CREATE TABLE IF NOT EXISTS posts (id INTEGER  AUTO_INCREMENT PRIMARY KEY, Header TEXT NOT NULL , Title TEXT NOT NULL , video TEXT NOT NULL , preview TEXT NOT NULL );");
             
 
             
