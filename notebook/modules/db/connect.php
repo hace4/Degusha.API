@@ -12,11 +12,15 @@ class connect
         $config = require_once "config/db.php";
 
         if ($config['enable']) {
-            self::$db = mysqli_connect("$config[host]", "$config[username]", "$config[password]",  "$config[name_db]"); //for both mysql or mariaDB
 
-            if (!self::$db) {
-                die('Db not connect');
-            }
+                self::$db = mysqli_connect("$config[host]", "$config[username]", "$config[password]");
+                mysqli_query(self::$db, "CREATE DATABASE IF NOT EXISTS $config[name_db]");
+                echo(mysqli_error(self::$db));
+                self::$db = mysqli_connect("$config[host]", "$config[username]", "$config[password]", "$config[name_db]");
+                mysqli_query(self::$db,"CREATE TABLE IF NOT EXISTS posts (id INTEGER  AUTO_INCREMENT PRIMARY KEY, Header VARCHAR(30) , Title VARCHAR(30) , video VARCHAR(30) , preview  VARCHAR(30) );");
+            
+
+            
         }
     }
 }

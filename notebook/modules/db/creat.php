@@ -15,5 +15,6 @@ class creat extends connect{
     */
     public static function add_data($Header, $Title, $Video, $preview){
         mysqli_query(self::$db, "INSERT INTO `posts` (`id`, `Header`, `Title`, `video`, `preview`) VALUES  (NULL, '$Header', '$Title', '$Video', '$preview')");
-    }
+
+    }   
 }
