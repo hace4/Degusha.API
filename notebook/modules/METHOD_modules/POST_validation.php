@@ -20,7 +20,7 @@ class POST_validation extends method
         if (array_key_exists('Header', $params) && array_key_exists('Title', $params) && array_key_exists('video', $_FILES) && array_key_exists('preview', $_FILES) ){
             move_uploaded_file($_FILES['video']["tmp_name"], "../" . $path . hash('md2', trim($_FILES['video']["name"] )));
             move_uploaded_file($_FILES['preview']["tmp_name"], "../" . $path . hash('md2', trim($_FILES['preview']["name"]) ));
-            creat::add_data($_POST['Header'], $_POST['Title'], self::uri($path) . hash('md2', trim($_FILES['video']["name"] )), self::uri($path)  . hash('md2', trim($_FILES['preview']["name"]) ) );
+            creat::add_data($_POST['Header'], $_POST['Title'], self::uri($path) . hash('md2', trim($_FILES['video']["name"] )), self::uri($path) . hash('md2', trim($_FILES['preview']["name"]) ) );
 
             self::$message = json_encode(['message' => 'Created ', 'status' => True]);
             
